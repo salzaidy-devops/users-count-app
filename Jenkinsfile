@@ -15,16 +15,17 @@ pipeline {
                 echo 'Running tests...'
             }
         }
-        stage('Build') {
+        stage('BuildDockerImage') {
             steps {
                 // sh 'npm install'
                 // sh 'npm run build'
-                echo 'Building application...'
+                echo 'Building Docker image...'
+                sh 'docker build -t users-count-app:1.0 .'
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying application...'
+                echo 'Deploying Docker image...'
                 // Add deployment commands here
             }
         }
