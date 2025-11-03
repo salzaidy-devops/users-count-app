@@ -17,16 +17,18 @@ pipeline {
         }
         stage('BuildDockerImage') {
             steps {
-                // sh 'npm install'
-                // sh 'npm run build'
                 echo 'Building Docker image...'
-                sh 'docker build -t users-count-app:1.0 .'
+                // sh 'docker build -t users-count-app:1.0 .'
+                sh 'docker build -t salzaidy/users-count-app:1.0 .'
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying Docker image...'
                 // Add deployment commands here
+                withCredentials([usernamePassword(credentialsId: 'docker-hub-repo', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
+                    sh 'echo $PASS | docker login -u $USER --password-stdin'
+                    sh 'docker push salzaidy/users-count-app:1.0'
             }
         }
     }
