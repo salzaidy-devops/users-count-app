@@ -1,0 +1,22 @@
+# === Node Backend Ignore Rules ===
+
+# Node modules
+node_modules
+
+# Local data / DB / logs
+db.json
+*.log
+
+# Environment configs
+.env
+.env.local
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Git & editors
+.git
+.gitignore
+.vscode
+.idea
