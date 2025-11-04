@@ -1,4 +1,5 @@
-const BASE = "http://localhost:4000/api";
+// Use relative path in production (same origin), absolute path in development
+const BASE = import.meta.env.PROD ? "/api" : "http://localhost:4000/api";
 
 export async function createUser(payload) {
   const res = await fetch(`${BASE}/users`, {

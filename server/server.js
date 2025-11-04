@@ -10,7 +10,15 @@ const DATA_FILE = path.join(__dirname, "db.json");
 
 const app = express();
 app.use(express.json());
-app.use(cors({ origin: "http://localhost:5173" }));
+// Detect production: if public directory exists, frontend is built and served from same origin
+const isProduction = fs.existsSync(path.join(__dirname, "public", "index.html"));
+if (isProduction) {
+  // In production (Docker), frontend and backend are same origin, no CORS restriction needed
+  app.use(cors());
+} else {
+  // In development, allow requests from Vite dev server
+  app.use(cors({ origin: "http://localhost:5173" }));
+}
 
 function readDB() {
   if (!fs.existsSync(DATA_FILE)) {
@@ -58,6 +66,7 @@ app.get("*", (req, res) => {
 });
 
 const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => {
-  console.log(`API listening on http://localhost:${PORT}`);
+const HOST = process.env.HOST || "0.0.0.0"; // Listen on all interfaces for Docker
+app.listen(PORT, HOST, () => {
+  console.log(`API listening on http://${HOST}:${PORT}`);
 });

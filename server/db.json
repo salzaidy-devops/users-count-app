@@ -1,25 +1,11 @@
 {
   "users": [
     {
-      "id": "mhin1gso",
+      "id": "mhk0xdo4",
       "firstName": "Shaker",
       "lastName": "Alzaidy",
-      "email": "s_alzaidy@hotmail.com",
-      "createdAt": "2025-11-03T04:26:40.584Z"
-    },
-    {
-      "id": "mhin1osm",
-      "firstName": "Shaker",
-      "lastName": "Alzaidy",
-      "email": "alzaidy.shaker92@gmail.com",
-      "createdAt": "2025-11-03T04:26:50.950Z"
-    },
-    {
-      "id": "mhiq9d58",
-      "firstName": "Shaker",
-      "lastName": "Alzaidy",
-      "email": "sh.alzaidy1@gmail.com",
-      "createdAt": "2025-11-03T05:56:47.948Z"
+      "email": "hello@test.com",
+      "createdAt": "2025-11-04T03:43:10.708Z"
     }
   ]
 }
